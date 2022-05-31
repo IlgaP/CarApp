@@ -1,6 +1,5 @@
 package com.example.carapp.service;
 
-import com.example.carapp.classes.AddCarRequest;
 import com.example.carapp.classes.Car;
 import com.example.carapp.repository.CarRepository;
 import org.springframework.http.HttpStatus;
