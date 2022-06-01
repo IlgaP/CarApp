@@ -1,6 +1,6 @@
 package com.example.carapp.service;
 
-import com.example.carapp.classes.Car;
+import com.example.carapp.model.Car;
 import com.example.carapp.repository.CarRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -54,7 +54,7 @@ public class CarServiceTest {
             );
         }).when(carRepository).save(car);
 
-        given(carRepository.save(car)).willReturn(car);
+
         Car savedCar = carService.addCar(car);
         assertThat(savedCar).isNotNull();
         verify(carRepository).save(ArgumentMatchers.any(Car.class));
@@ -74,13 +74,13 @@ public class CarServiceTest {
                 "AA1234"
         );
 
-        given(carRepository.findByMakeAndModelAndYearAndVINNumberAndRegistrationNumber(
+        given(carRepository.existsByMakeAndModelAndYearAndVINNumberAndRegistrationNumber(
                 car2.getMake(),
                 car2.getModel(),
                 car2.getYear(),
                 car2.getVINNumber(),
                 car2.getRegistrationNumber()
-        )).willReturn(Optional.of(car2));
+        )).willReturn(true);
 
         ResponseStatusException exception = Assertions.assertThrows(ResponseStatusException.class,
                 () -> carService.addCar(car2));

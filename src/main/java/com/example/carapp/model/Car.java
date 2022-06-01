@@ -1,4 +1,4 @@
-package com.example.carapp.classes;
+package com.example.carapp.model;
 
 
 import javax.persistence.*;

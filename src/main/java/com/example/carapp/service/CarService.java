@@ -1,6 +1,6 @@
 package com.example.carapp.service;
 
-import com.example.carapp.classes.Car;
+import com.example.carapp.model.Car;
 import com.example.carapp.repository.CarRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -23,14 +23,13 @@ public class CarService {
     }
 
     public Car addCar(Car car) {
-        Optional<Car> maybeCar = carRepository.findByMakeAndModelAndYearAndVINNumberAndRegistrationNumber(
+        if (carRepository.existsByMakeAndModelAndYearAndVINNumberAndRegistrationNumber(
                 car.getMake(),
                 car.getModel(),
                 car.getYear(),
                 car.getVINNumber(),
                 car.getRegistrationNumber()
-        );
-        if (maybeCar.isPresent()) {
+        )) {
             throw new ResponseStatusException(HttpStatus.CONFLICT);
         }
         return carRepository.save(car);

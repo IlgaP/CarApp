@@ -1,6 +1,6 @@
 package com.example.carapp.controller;
 
-import com.example.carapp.classes.Car;
+import com.example.carapp.model.Car;
 import com.example.carapp.service.CarService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

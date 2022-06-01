@@ -1,6 +1,6 @@
 package com.example.carapp.repository;
 
-import com.example.carapp.classes.Car;
+import com.example.carapp.model.Car;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface CarRepository extends JpaRepository<Car, Integer> {
 
-    Optional<Car> findByMakeAndModelAndYearAndVINNumberAndRegistrationNumber (
+    boolean existsByMakeAndModelAndYearAndVINNumberAndRegistrationNumber (
             String make,
             String model,
             int year,
